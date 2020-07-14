@@ -1,33 +1,46 @@
 stages:
-    - before_build
+    - build_node
+    - build_docker
+
+.build_node: &build_node
+    stage: build_node
+    image: node:12
+    services:
+        - node:12
+    tags:
+        - build
+        - node
+        - docker
+    script:
+        - npm i
+        - npm run build
 
 front-build:
-  image: node:12
-  stage: before_build
-  tags:
-    - build
-    - node
-    - docker 
-  services:
-    - node:12
-  before_script:
-    - cd frontend-docker
-  script:
-    - npm i
-    - npm run build
+    <<: *build_node
+    before_script:
+        - cd frontend-docker
+    artifacts:
+        paths:
+            - ./frontend-docker/build/
+        expire_in: 1 hour
 
-    
 back-build:
-  image: node:12
-  stage: before_build
-  tags:
-    - build
-    - node
-    - docker
-  services:
-    - node:12
-  before_script:
-    - cd backend-docker
-  script:
-    - npm i
-    - npm run build
+    <<: *build_node
+    before_script:
+        - cd backend-docker
+    artifacts:
+        paths:
+            - ./backend-docker/package.json
+            - ./backend-docker/build/index.js
+        expire_in: 1 hour
+    
+docker_build:
+    stage: build_docker
+    tags:
+        - build
+        - shell
+    dependencies:
+        - front-build
+        - back-build
+    script:
+        - docker-compose build
