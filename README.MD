@@ -52,4 +52,4 @@ Runner2(executor - shell).
 	tags: build, shell
 ```
 
-![](https://github.com/EricRoux/docker-mern/master/images/1.png)
+<img src="images/1.png" alt="Testing"/>
