@@ -1,0 +1,33 @@
+stages:
+    - before_build
+
+front-build:
+  image: node:12
+  stage: before_build
+  tags:
+    - build
+    - node
+    - docker 
+  services:
+    - node:12
+  before_script:
+    - cd frontend-docker
+  script:
+    - npm i
+    - npm run build
+
+    
+back-build:
+  image: node:12
+  stage: before_build
+  tags:
+    - build
+    - node
+    - docker
+  services:
+    - node:12
+  before_script:
+    - cd backend-docker
+  script:
+    - npm i
+    - npm run build
