@@ -51,5 +51,15 @@ Runner1 (executor - docker).
 Runner2(executor - shell).
 	tags: build, shell
 ```
-
 <img src="images/1.png" alt="Testing"/>
+
+## Jenkins CI
+1. Start Jenkins
+2. Install modules: Pipline Scrips, Green Balls
+3. Create new pipeline
+4. Pipeline definition: pipeline script from SCM
+	SCM: git
+	Repository URL: [https://github.com/EricRoux/docker-mern](https://github.com/EricRoux/docker-mern)
+5. Build now
+
+<img src="images/2.png" alt="Testing"/>
