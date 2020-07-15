@@ -58,8 +58,8 @@ Runner2(executor - shell).
 2. Install modules: Pipline Scrips, Green Balls
 3. Create new pipeline
 4. Pipeline definition: pipeline script from SCM
-	SCM: git
-	Repository URL: [https://github.com/EricRoux/docker-mern](https://github.com/EricRoux/docker-mern)
-5. Build now
+* SCM: git
+* Repository URL: [https://github.com/EricRoux/docker-mern](https://github.com/EricRoux/docker-mern)
+6. Build now
 
 <img src="images/2.png" alt="Testing"/>
